@@ -1,4 +1,6 @@
 import json, urllib.request,requests
+# This gives the schedule for the date listed
+
 nhl_data = 'https://statsapi.web.nhl.com/api/v1/schedule?teamId=1&startDate=2018-12-01&endDate=2018-12-31'
 
 json_data = requests.get(nhl_data).json()

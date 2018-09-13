@@ -1,6 +1,9 @@
 import json, urllib.request,requests
-nhl_data = 'https://statsapi.web.nhl.com/api/v1/teams/1/roster'
-team_name = 'https://statsapi.web.nhl.com/api/v1/teams/1'
+# This app pulls the roster to the team ID in ti
+ti = 22
+
+nhl_data = 'https://statsapi.web.nhl.com/api/v1/teams/'+str(ti)+'/roster'
+team_name = 'https://statsapi.web.nhl.com/api/v1/teams/'+str(ti)
 # This is a good version of getting the roster - need to sort*/
 json_data = requests.get(nhl_data).json()
 team_data = requests.get(team_name).json()
