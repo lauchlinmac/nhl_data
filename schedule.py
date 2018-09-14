@@ -1,8 +1,11 @@
 import json, urllib.request,requests
 # This gives the schedule for the date listed
 
+#set the base URL
+base_url = 'https://statsapi.web.nhl.com/api/v1/'
+
 fav_team = 30
-nhl_data = 'https://statsapi.web.nhl.com/api/v1/schedule?teamId='+str(fav_team)+'&startDate=2018-12-01&endDate=2018-12-31'
+nhl_data = base_url+'schedule?teamId='+str(fav_team)+'&startDate=2018-12-01&endDate=2018-12-31'
 
 json_data = requests.get(nhl_data).json()
 
