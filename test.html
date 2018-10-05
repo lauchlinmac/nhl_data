@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>NHL Schedule Test</title>
+    <style>
+    .games{
+        display: flex;
+    }
+
+    li{
+        margin: 2px;
+    }
+    </style>
+</head>
+<body>
+    <button id="button">Load Games</button>
+    <h1>Devils Games</h1>
+    <div id="games"></div>
+
+    <script>
+    
+    //Static URL used for testing
+    var url = 'https://statsapi.web.nhl.com/api/v1/schedule?teamId=1&startDate=2018-10-06&endDate=2019-06-01'
+
+    document.getElementById('button').addEventListener('click',loadGames);
+    
+    function loadGames(){
+        var xhr = new XMLHttpRequest();
+        xhr.open('GET', url, true);
+        
+        xhr.onload = function(){
+       
+        //console.log(games);
+        if(this.status == 200){
+            var games = JSON.parse(this.responseText);
+            var output = '';
+var i = 0;
+        while(i < games.totalItems){
+            
+            output += 
+            '<div class="games">'+
+             '<ul>'+
+            '<li>Game Number: '+(i+1)+
+             '<li>Date: '+games.dates[i].date+'</li>'+
+            '<li>Home Team: '+games.dates[i].games[0].teams.home.team.name+'</li>'+
+            '<li>Away Team: '+games.dates[i].games[0].teams.away.team.name+'</li>'+
+            '</ul>'+
+            '</div>';
+            i++;
+        }
+        }
+        document.getElementById('games').innerHTML = output;
+        }
+        
+        xhr.send();
+    }
+    </script>
+</body>
+</html>

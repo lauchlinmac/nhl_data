@@ -4,7 +4,7 @@ import json, urllib.request,requests
 #set the base URL
 base_url = 'https://statsapi.web.nhl.com/api/v1/'
 
-ti = 22
+ti = 1
 
 nhl_data = base_url+'teams/'+str(ti)+'/roster'
 team_name = base_url+'teams/'+str(ti)
@@ -28,3 +28,11 @@ while i < number:
     print(players[i]) 
     i=i+1
 
+# goalies = []
+
+# i=0
+# while i < number:
+#     if(json_data['roster'][i]['position']['code'] == 'G'):
+#         goalies.append(json_data['roster'][i]['person']['fullName'])
+#         print(goalies[i],'is a Goalie')
+#         i=i+1
